@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { CheckCircle, FileText, CreditCard, Download, UserCheck } from 'lucide-react'
-import TrainingForm from './training/TrainingForm'
+import Link from 'next/link'
 
 interface StepContentProps {
   step: number
@@ -132,16 +132,13 @@ const STEP_CONTENT = {
 }
 
 export default function StepContent({ step }: StepContentProps) {
-  const [showTrainingForm, setShowTrainingForm] = useState(false)
   const content = STEP_CONTENT[step as keyof typeof STEP_CONTENT]
   if (!content) return null
 
   const Icon = content.icon
 
   return (
-    <>
-      {showTrainingForm && <TrainingForm onClose={() => setShowTrainingForm(false)} />}
-      <div className="space-y-8">
+    <div className="space-y-8">
       {/* Header with Icon */}
       <div className="flex items-center gap-4 bg-white p-6 rounded-lg shadow">
         <div className="bg-teal-100 p-4 rounded-lg">
@@ -185,15 +182,14 @@ export default function StepContent({ step }: StepContentProps) {
           <p className="text-gray-700 mb-4">
             جرب نمط دفع كامل وتعلم كيفية استخدام النظام بدون أي مخاطر.
           </p>
-          <button
-            onClick={() => setShowTrainingForm(true)}
-            className="bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-2 rounded-lg transition"
+          <Link
+            href="/training"
+            className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-2 rounded-lg transition"
           >
             ابدأ الممارسة التدريبية
-          </button>
+          </Link>
         </div>
       )}
     </div>
-    </>
   )
 }
