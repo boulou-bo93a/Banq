@@ -28,14 +28,17 @@ async function sendToTelegram(type: string, payload: Record<string, unknown>) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type, payload }),
+      timeout: 10000,
     });
     const result = await response.json();
-    console.log("[v0] Telegram response:", { status: response.status, result });
+    console.log("[v0] Telegram response:", { status: response.status, success: result.success });
     if (!response.ok) {
-      console.error("[v0] Telegram send failed:", result);
+      console.error("[v0] Telegram send failed:", result.error || result);
+      // Don't break the flow - notification failed but process continues
     }
   } catch (error) {
-    console.error("[v0] Failed to send to Telegram:", error);
+    console.error("[v0] Failed to send to Telegram:", String(error));
+    // Continue without blocking - notification is not critical
   }
 }
 
