@@ -1,17 +1,15 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Cairo } from 'next/font/google'
 import './globals.css'
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
+const cairo = Cairo({ 
+  subsets: ["arabic", "latin"],
+  variable: '--font-cairo'
+});
 
 export const metadata: Metadata = {
-  title: 'منصة التدريب - Process Training Platform',
-  description: 'منصة تدريب متعددة المراحل - A multi-step process training platform',
+  title: 'بريد الجزائر - حجز البطاقات البنكية',
+  description: 'احجز بطاقتك البنكية الجديدة من بريد الجزائر - 7 أنواع من البطاقات لتلبية جميع احتياجاتك',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -38,10 +36,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="ar" dir="rtl" className="bg-background">
+      <body className={`${cairo.className} antialiased`}>
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
