@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cairo } from 'next/font/google'
 import './globals.css'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const cairo = Cairo({ 
   subsets: ["arabic", "latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
     <html lang="ar" dir="rtl" className="bg-background">
       <body className={`${cairo.className} antialiased`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )
