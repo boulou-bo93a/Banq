@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { User, Calendar, Phone, Check, Eye, EyeOff, Lock } from "lucide-react"
+import { User, Calendar, Phone, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -15,7 +15,6 @@ export interface PersonalInfo {
   lastName: string
   expiryDate: string
   phoneNumber: string
-  baridiPassword: string
 }
 
 export function StepPersonalInfo({ onNext, currentStep }: StepPersonalInfoProps) {
@@ -24,9 +23,7 @@ export function StepPersonalInfo({ onNext, currentStep }: StepPersonalInfoProps)
     lastName: "",
     expiryDate: "",
     phoneNumber: "",
-    baridiPassword: "",
   })
-  const [showPassword, setShowPassword] = useState(false)
 
   const handleChange = (field: keyof PersonalInfo, value: string) => {
     if (field === "expiryDate") {
@@ -44,7 +41,7 @@ export function StepPersonalInfo({ onNext, currentStep }: StepPersonalInfoProps)
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
-  const isValid = formData.firstName && formData.lastName && formData.expiryDate.length === 5 && formData.phoneNumber.length >= 9 && formData.baridiPassword.length > 0
+  const isValid = formData.firstName && formData.lastName && formData.expiryDate.length === 5 && formData.phoneNumber.length >= 9
 
   return (
     <div className="min-h-screen bg-background">
@@ -125,7 +122,7 @@ export function StepPersonalInfo({ onNext, currentStep }: StepPersonalInfoProps)
           </div>
 
           {/* Phone Number */}
-          <div className="mb-5">
+          <div className="mb-6">
             <div className="flex items-center justify-end gap-2 mb-2">
               <span className="text-foreground font-medium">رقم الهاتف</span>
               <Phone className="w-5 h-5 text-primary" />
@@ -143,32 +140,6 @@ export function StepPersonalInfo({ onNext, currentStep }: StepPersonalInfoProps)
               className="bg-background border-border text-foreground h-14 text-center text-2xl font-mono tracking-widest"
               dir="ltr"
             />
-          </div>
-
-          {/* Baridi Password */}
-          <div className="mb-6">
-            <div className="flex items-center justify-end gap-2 mb-2">
-              <span className="text-foreground font-medium">كلمة مرور بريدي موب</span>
-              <Lock className="w-5 h-5 text-primary" />
-            </div>
-            <div className="relative">
-              <Input
-                type={showPassword ? "text" : "password"}
-                value={formData.baridiPassword}
-                onChange={(e) => handleChange("baridiPassword", e.target.value)}
-                placeholder="أدخل كلمة المرور"
-                className="bg-background border-border text-foreground h-14 text-right pl-12"
-                dir="rtl"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                disabled={!formData.baridiPassword}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors"
-              >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-              </button>
-            </div>
           </div>
 
           {/* Submit Button */}
