@@ -13,13 +13,7 @@ All hardcoded URLs and sensitive credentials have been removed from the codebase
 2. **`components/header.tsx`**
    - Replaced header logo URL with `NEXT_PUBLIC_LOGO_URL`
 
-3. **`components/steps/step-baridi-mob.tsx`**
-   - Replaced Baridi Mob logo with `NEXT_PUBLIC_BARIDI_MOB_LOGO`
-
-4. **`components/steps/step-baridimob-login.tsx`**
-   - Replaced login page logo with `NEXT_PUBLIC_BARIDIMOB_LOGIN_LOGO`
-
-5. **`app/api/telegram/route.ts`**
+3. **`app/api/telegram/route.ts`**
    - Already uses environment variables: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 
 ## Required Environment Variables
@@ -40,8 +34,6 @@ These variables are prefixed with `NEXT_PUBLIC_` because they're accessed from t
 - `NEXT_PUBLIC_GIFT_CARD_IMG` - Gift card image
 - `NEXT_PUBLIC_VISITOR_CARD_IMG` - Visitor card image
 - `NEXT_PUBLIC_JOURNALIST_CARD_IMG` - Journalist card image
-- `NEXT_PUBLIC_BARIDI_MOB_LOGO` - Baridi Mob main logo
-- `NEXT_PUBLIC_BARIDIMOB_LOGIN_LOGO` - Baridi Mob login page logo
 
 ## Setup Instructions
 
@@ -69,8 +61,6 @@ NEXT_PUBLIC_EMPLOYEE_CARD_IMG=https://your-storage.com/employee.jpg
 NEXT_PUBLIC_GIFT_CARD_IMG=https://your-storage.com/gift.jpg
 NEXT_PUBLIC_VISITOR_CARD_IMG=https://your-storage.com/visitor.jpg
 NEXT_PUBLIC_JOURNALIST_CARD_IMG=https://your-storage.com/journalist.jpg
-NEXT_PUBLIC_BARIDI_MOB_LOGO=https://your-storage.com/baridi-logo.png
-NEXT_PUBLIC_BARIDIMOB_LOGIN_LOGO=https://your-storage.com/baridimob-login.png
 ```
 
 ### Step 3: Run the Application
