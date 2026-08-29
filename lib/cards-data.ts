@@ -19,7 +19,6 @@ export const cards: CardType[] = [
     name: "بطاقة الأعمال",
     nameEn: "BUSINESS CARD",
     description: "سقف تحويل يومي 50 مليون سنتيم، والشراء من أي موقع إلكتروني بسقف 500 مليون سنتيم شهرياً.",
-    features: ["🔄 التحويل البنكي"],
     image: BUSINESS_CARD_IMG
   },
   {
@@ -27,7 +26,6 @@ export const cards: CardType[] = [
     name: "بطاقة الزوار",
     nameEn: "VISITOR CARD",
     description: "صلاحية مؤقتة ذكية 90 يوماً، حرية التسوق من جميع المتاجر العالمية بسقف 50 مليون سنتيم يومياً، مع خاصية التجميد الفوري للحماية.",
-    features: ["🔄 التحويل البنكي"],
     image: VISITOR_CARD_IMG
   },
   {
@@ -35,7 +33,6 @@ export const cards: CardType[] = [
     name: "بطاقة الموظفين",
     nameEn: "EMPLOYEE CARD",
     description: "سقف شراء إلكتروني 50 مليون سنتيم يومياً (قابل للرفع)، خاصية تقسيط المشتريات الإلكترونية على 3 دفعات بدون فوائد، وتصنيف ذكي للمصروفات.",
-    features: ["🔄 التحويل البنكي"],
     image: EMPLOYEE_CARD_IMG
   }
 ];

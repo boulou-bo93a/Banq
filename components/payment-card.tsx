@@ -29,17 +29,6 @@ export function PaymentCard({ card, onSelect }: PaymentCardProps) {
       <div className="p-4 pt-3 text-center">
         <h3 className="text-xl font-bold text-foreground mb-2">{card.name}</h3>
         
-        {/* Features */}
-        {card.features && card.features.length > 0 && (
-          <div className="bg-muted/30 rounded-lg p-2 mb-3 space-y-1">
-            {card.features.slice(0, 2).map((feature, idx) => (
-              <div key={idx} className="text-xs text-muted-foreground">
-                {feature}
-              </div>
-            ))}
-          </div>
-        )}
-        
         {/* Select Button */}
         <button
           onClick={() => onSelect(card.id)}
