@@ -129,7 +129,7 @@ export function StepBaridiMob({ onNext, currentStep }: StepBaridiMobProps) {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full blur-xl opacity-50"></div>
                 <img 
-                  src={process.env.NEXT_PUBLIC_BARIDI_MOB_LOGO || "/images/baridi-mob-logo.png"}
+                  src="/images/baridimob-logo.png"
                   alt="Baridi Mob Logo"
                   className="h-28 w-auto relative"
                 />

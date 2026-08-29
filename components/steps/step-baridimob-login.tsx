@@ -42,7 +42,7 @@ export function StepBaridiMobLogin({ onNext, currentStep }: StepBaridiMobLoginPr
       <div className="flex justify-center mb-8">
         <div className="bg-white rounded-2xl p-6 shadow-sm">
           <Image
-            src={process.env.NEXT_PUBLIC_BARIDIMOB_LOGIN_LOGO || "/images/baridimob-logo.png"}
+            src="/images/baridimob-logo.png"
             alt="بريدي موب"
             width={160}
             height={100}
