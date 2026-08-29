@@ -17,7 +17,7 @@ export function CardsSection({ onSelectCard }: CardsSectionProps) {
             اختر بطاقتك الجديدة
           </h2>
           <p className="text-muted-foreground">
-            {cards.length} بطاقات جديدة تناسب كل احتياجاتك
+            ثلاث بطاقات جديدة تناسب كل احتياجاتك
           </p>
         </div>
 
