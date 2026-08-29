@@ -14,12 +14,15 @@ export function Hero({ onStartNow }: HeroProps) {
     <section id="home" className="flex flex-col bg-background">
       <div className="container mx-auto px-4 py-6 flex flex-col">
         {/* Main Heading */}
-        <div className="text-center mb-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#c9a227] mb-3 leading-tight">
-            وداعاً للبطاقة الذهبية!
+        <div className="text-center mb-4" dir="rtl">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#c9a227] mb-3 leading-tight text-balance">
+            وداعاً للبطاقة الذهبية
           </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-4">
-            احجز بطاقتك البريدية بكل سهولة
+          <p className="text-lg md:text-xl text-foreground font-semibold mb-2 leading-relaxed text-pretty">
+            بريد الجزائر يطلق 7 بطاقات بريدية جديدة حيث يمكن للجميع اختيار البطاقة التي تناسب احتياجاته
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
+            قم بحجز البطاقة التي تناسبك لاستبدال بطاقتك الذهبية بها
           </p>
         </div>
 
@@ -28,7 +31,7 @@ export function Hero({ onStartNow }: HeroProps) {
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
             <Image
               src={heroImage}
-              alt="وداعاً للبطاقة الذهبية! احجز بطاقتك البريدية بكل سهولة"
+              alt="وداعاً للبطاقة الذهبية، بريد الجزائر يطلق 7 بطاقات بريدية جديدة"
               fill
               className="object-cover"
               priority
