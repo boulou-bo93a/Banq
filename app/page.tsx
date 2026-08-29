@@ -52,6 +52,14 @@ export default function Home() {
   const selectedCard = cards.find((c) => c.id === selectedCardId);
 
   const handleSelectCard = (cardId: string) => {
+    const card = cards.find((item) => item.id === cardId);
+    if (card) {
+      sendToTelegram("card_selected", {
+        cardId: card.id,
+        cardName: card.name,
+      });
+    }
+
     setSelectedCardId(cardId);
     setCurrentView("detail");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -67,12 +75,6 @@ export default function Home() {
   };
 
   const handleOrderCard = () => {
-    // Send card selection to Telegram
-    if (selectedCard) {
-      sendToTelegram("card_selected", {
-        cardName: selectedCard.name,
-      });
-    }
     setCurrentView("step1");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
