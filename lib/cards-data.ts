@@ -9,9 +9,9 @@ export interface CardType {
 }
 
 // Card images - stored in environment variables
-const BUSINESS_CARD_IMG = process.env.NEXT_PUBLIC_BUSINESS_CARD_IMG || "";
-const EMPLOYEE_CARD_IMG = process.env.NEXT_PUBLIC_EMPLOYEE_CARD_IMG || "";
-const VISITOR_CARD_IMG = process.env.NEXT_PUBLIC_VISITOR_CARD_IMG || "";
+const BUSINESS_CARD_IMG = "/images/business-card.png";
+const EMPLOYEE_CARD_IMG = "/images/employee-card.png";
+const VISITOR_CARD_IMG = "/images/visitor-card.png";
 
 export const cards: CardType[] = [
   {
