@@ -23,7 +23,7 @@ export function Header() {
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-full bg-white p-1.5 shadow-sm border border-border/30 flex items-center justify-center overflow-hidden">
               <Image
-                src={process.env.NEXT_PUBLIC_LOGO_URL || "/images/logo.png"}
+                src="/images/baridimob-logo.png"
                 alt="بريد الجزائر"
                 width={28}
                 height={28}

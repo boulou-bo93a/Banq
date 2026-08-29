@@ -17,16 +17,25 @@ export function CardsSection({ onSelectCard }: CardsSectionProps) {
             اختر بطاقتك الجديدة
           </h2>
           <p className="text-muted-foreground">
-            {cards.length} بطاقات جديدة تناسب كل احتياجاتك
+            ثلاث بطاقات جديدة تناسب كل احتياجاتك
           </p>
         </div>
 
         {/* Cards List */}
-        <div className="flex flex-col gap-5 max-w-md mx-auto">
+        <div
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:items-stretch md:overflow-visible md:pb-0"
+          aria-label="البطاقات المتاحة"
+          dir="rtl"
+        >
           {cards.map((card) => (
-            <PaymentCard key={card.id} card={card} onSelect={onSelectCard} />
+            <div key={card.id} className="min-w-[min(86vw,21rem)] snap-center md:min-w-0">
+              <PaymentCard card={card} onSelect={onSelectCard} />
+            </div>
           ))}
         </div>
+        <p className="mt-3 text-center text-xs text-muted-foreground md:hidden" aria-hidden="true">
+          اسحب جانبياً لاستعراض البطاقات
+        </p>
       </div>
     </section>
   );

@@ -56,9 +56,12 @@ export function CardDetail({ card, onBack, onOrder, onSelectCard }: CardDetailPr
           )}
 
           {/* Description */}
-          <p className="text-muted-foreground text-center leading-relaxed mb-6">
-            {card.description}
-          </p>
+          <div className="rounded-xl border border-border bg-muted/30 p-4 mb-6 text-center" dir="rtl">
+            <p className="text-sm font-semibold text-foreground mb-2">وصف البطاقة</p>
+            <p className="text-muted-foreground leading-relaxed">
+              {card.description}
+            </p>
+          </div>
 
           {/* Order Button */}
           <Button

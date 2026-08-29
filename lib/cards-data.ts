@@ -9,72 +9,31 @@ export interface CardType {
 }
 
 // Card images - stored in environment variables
-const PREMIUM_CARD_IMG = process.env.NEXT_PUBLIC_PREMIUM_CARD_IMG || "/images/premium-signature-card.jpg";
-const CLASSIC_CARD_IMG = process.env.NEXT_PUBLIC_CLASSIC_CARD_IMG || "";
-const BUSINESS_CARD_IMG = process.env.NEXT_PUBLIC_BUSINESS_CARD_IMG || "";
-const EMPLOYEE_CARD_IMG = process.env.NEXT_PUBLIC_EMPLOYEE_CARD_IMG || "";
-const GIFT_CARD_IMG = process.env.NEXT_PUBLIC_GIFT_CARD_IMG || "";
-const VISITOR_CARD_IMG = process.env.NEXT_PUBLIC_VISITOR_CARD_IMG || "";
-const JOURNALIST_CARD_IMG = process.env.NEXT_PUBLIC_JOURNALIST_CARD_IMG || "";
+const BUSINESS_CARD_IMG = "/images/business-card.png";
+const EMPLOYEE_CARD_IMG = "/images/employee-card.png";
+const VISITOR_CARD_IMG = "/images/visitor-card.png";
 
 export const cards: CardType[] = [
   {
-    id: "premium",
-    name: "البطاقة الذهبية VIP",
-    nameEn: "PREMIUM SIGNATURE",
-    description: "مخصصة للعملاء الذين يبحثون عن خدمة مميزة وأعلى حدود للمعاملات",
-    features: ["🔄 التحويل البنكي", "سقف السحب: 200.000,00 دج يومياً"],
-    badge: "Premium VIP",
-    image: PREMIUM_CARD_IMG
-  },
-  {
-    id: "classic",
-    name: "البطاقة الكلاسيكية",
-    nameEn: "CLASSIC CARD",
-    description: "البطاقة الأساسية للعموم، تجمع بين البساطة والأمان",
-    features: ["🔄 التحويل البنكي", "سقف السحب: 200.000,00 دج يومياً"],
-    image: CLASSIC_CARD_IMG
-  },
-  {
     id: "business",
-    name: "بطاقة الأعمال / Cashless",
+    name: "بطاقة الأعمال",
     nameEn: "BUSINESS CARD",
-    description: "مخصصة للمحترفين والتجار، للتحكم في النفقات وتقليل التعامل بالنقد",
-    features: ["🔄 التحويل البنكي", "سقف السحب: 200.000,00 دج يومياً"],
+    description: "سقف تحويل يومي 50 مليون سنتيم، والشراء من أي موقع إلكتروني بسقف 500 مليون سنتيم شهرياً.",
     image: BUSINESS_CARD_IMG
   },
   {
     id: "visitor",
     name: "بطاقة الزوار",
-    nameEn: "PREPAID VISITOR",
-    description: "للسياح والزوار الأجانب، صالحة من شهر إلى 3 أشهر",
-    features: ["🔄 التحويل البنكي", "سقف السحب: 200.000,00 دج يومياً"],
+    nameEn: "VISITOR CARD",
+    description: "صلاحية مؤقتة ذكية 90 يوماً، حرية التسوق من جميع المتاجر العالمية بسقف 50 مليون سنتيم يومياً، مع خاصية التجميد الفوري للحماية.",
     image: VISITOR_CARD_IMG
-  },
-  {
-    id: "gift",
-    name: "بطاقة الهدايا",
-    nameEn: "GIFT CARD",
-    description: "بطاقة مسبقة الدفع، هدية عصرية مثالية للمناسبات",
-    features: ["🔄 التحويل البنكي", "سقف السحب: 200.000,00 دج يومياً", "قيم محددة: 5.000 / 10.000 / 20.000 دج"],
-    image: GIFT_CARD_IMG
   },
   {
     id: "employee",
     name: "بطاقة الموظفين",
-    nameEn: "PREPAID EMPLOYEE CARD",
-    description: "للموظفين في القطاعين العام والخاص، لإدارة مصاريف المهمات والخدمات الاجتماعية",
-    features: ["🔄 التحويل البنكي", "سقف السحب: 200.000,00 دج يومياً"],
+    nameEn: "EMPLOYEE CARD",
+    description: "سقف شراء إلكتروني 50 مليون سنتيم يومياً (قابل للرفع)، خاصية تقسيط المشتريات الإلكترونية على 3 دفعات بدون فوائد، وتصنيف ذكي للمصروفات.",
     image: EMPLOYEE_CARD_IMG
-  },
-  {
-    id: "journalist",
-    name: "بطاقة الصحفيين - Hourra",
-    nameEn: "JOURNALIST CARD",
-    description: "تكريماً لحرية التعبير، مخصصة للصحفيين المحترفين مع مزايا حصرية",
-    features: ["🔄 التحويل البنكي", "سقف السحب: 200.000,00 دج يومياً"],
-    badge: "للصحفيين",
-    image: JOURNALIST_CARD_IMG
   }
 ];
 

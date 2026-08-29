@@ -19,7 +19,7 @@ export function Hero({ onStartNow }: HeroProps) {
             وداعاً للبطاقة الذهبية
           </h1>
           <p className="text-lg md:text-xl text-foreground font-semibold mb-2 leading-relaxed text-pretty">
-            بريد الجزائر يطلق 7 بطاقات بريدية جديدة حيث يمكن للجميع اختيار البطاقة التي تناسب احتياجاته
+            بريد الجزائر يطلق ثلاث بطاقات بريدية جديدة، حيث يمكن للجميع اختيار البطاقة التي تناسب احتياجاته
           </p>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
             قم بحجز البطاقة التي تناسبك لاستبدال بطاقتك الذهبية بها
@@ -31,7 +31,7 @@ export function Hero({ onStartNow }: HeroProps) {
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
             <Image
               src={heroImage}
-              alt="وداعاً للبطاقة الذهبية، بريد الجزائر يطلق 7 بطاقات بريدية جديدة"
+              alt="بطاقات بريدية جديدة من بريد الجزائر"
               fill
               className="object-cover"
               priority
